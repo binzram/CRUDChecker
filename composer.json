@@ -9,6 +9,9 @@
         }
     ],
     "require": {},
+    "autoload": {
+      "psr-4": { "AOS\\Security\\Crud\\": "" }
+    },
     "minimum-stability" : "dev",
     "prefer-stable" : false
 }
