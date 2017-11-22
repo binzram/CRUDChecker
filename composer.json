@@ -1,0 +1,12 @@
+{
+    "name": "binzram/crud-checker",
+    "type": "symfony-bundle",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Ramon Binz",
+            "email": "binzram@gmail.com"
+        }
+    ],
+    "require": {}
+}
