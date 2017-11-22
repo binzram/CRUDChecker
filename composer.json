@@ -12,6 +12,9 @@
     "autoload": {
       "psr-4": { "AOS\\Security\\Crud\\": "" }
     },
+    "bundles": {
+      "AOS\\Security\\Crud\\CrudCheckerBundle": ["all"],
+    },
     "minimum-stability" : "dev",
     "prefer-stable" : false
 }
