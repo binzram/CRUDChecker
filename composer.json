@@ -9,4 +9,6 @@
         }
     ],
     "require": {},
+    "minimum-stability" : "dev",
+    "prefer-stable" : false
 }
