@@ -1,0 +1,3 @@
+services:
+    aos.crud.security.doctrine.store:
+        class: AOS\Security\Crud\Security\Doctrine\EntityStore

@@ -5,11 +5,6 @@ namespace AOS\Security\Crud\DependencyInjection;
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
 
-/**
- * This class contains the configuration information for the bundle.
- *
- * @author Christophe Coevoet <stof@notk.org>
- */
 class Configuration implements ConfigurationInterface
 {
     /**
@@ -23,15 +18,21 @@ class Configuration implements ConfigurationInterface
         $rootNode = $treeBuilder->root('crud_checker');
 
         $rootNode
-            ->children()
-                ->arrayNode('entities')
-                    ->addDefaultsIfNotSet()
+        ->children()
+            ->arrayNode('entity')
+                ->prototype('array')
                     ->children()
-                        ->scalarNode('name')->cannotBeEmpty()->end()
-                        ->arrayNode('roles')->addDefaultsIfNotSet()->end()
+                        ->arrayNode('roles')
+                            ->prototype('scalar')->end()
+                        ->end()
+                        ->arrayNode('permissions')
+                            ->prototype('scalar')->end()
+                        ->end()
                     ->end()
                 ->end()
-            ->end();
+            ->end()
+        ->end()
+        ;
 
         return $treeBuilder;
     }
