@@ -3,5 +3,26 @@ parameters:
     cache.item.entities.name: entities
 
 services:
+    aos.crud.security.securityService:
+        class: AOS\Security\Crud\Security\SecurityService
+        arguments:
+            - "%cache.name%"
+            - "%cache.item.entities.name%"
+            - "@security.token_storage"
+
     aos.crud.security.doctrine.store:
         class: AOS\Security\Crud\Security\Doctrine\EntityStore
+
+    aos.crud.security.doctrine.doctrineSecurityService:
+        class: AOS\Security\Crud\Security\Doctrine\DoctrineSecurityService
+        arguments:
+            - "@logger"
+            - "@aos.crud.security.securityService"
+
+    aos.crud.security.eventlistener.entityCredentialListener:
+        class: AOS\Security\Crud\EventListener\EntityCredentialListener
+        arguments:
+            - "@service_container"
+        tags:
+            - { name: doctrine.event_listener, event: postLoad }
+            - { name: doctrine.event_listener, event: onFlush }
