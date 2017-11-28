@@ -24,6 +24,8 @@ class CrudCheckerExtension extends Extension
         $config = $this->processConfiguration($configuration, $configs);
 
         $doctrineStore = $container->get('aos.crud.security.doctrine.store');
+        $doctrineStore->setCacheName($container->getParameter('cache.name'));
+        $doctrineStore->setCacheItemName($container->getParameter('cache.item.entities.name'));
         $doctrineStore->store($config['entity']);
     }
 }

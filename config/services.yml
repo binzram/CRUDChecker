@@ -1,3 +1,7 @@
+parameters:
+    cache.name: app.crudchecker
+    cache.item.entities.name: entities
+
 services:
     aos.crud.security.doctrine.store:
         class: AOS\Security\Crud\Security\Doctrine\EntityStore
