@@ -2,6 +2,7 @@
 
 namespace AOS\Security\Crud\DependencyInjection;
 
+use AOS\Security\Crud\Permission\Entity\Operation;
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
 
@@ -27,7 +28,12 @@ class Configuration implements ConfigurationInterface
                         ->end()
                         ->arrayNode('permissions')
                             ->enumPrototype('scalar')
-                                ->values(['CREATE', 'READ', 'UPDATE', 'DELETE'])
+                                ->values([
+                                    Operation::CREATE,
+                                    Operation::READ,
+                                    Operation::UPDATE,
+                                    Operation::DELETE,
+                                ])
                             ->end()
                         ->end()
                     ->end()
