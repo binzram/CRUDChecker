@@ -12,9 +12,17 @@ services:
 
     aos.crud.security.doctrine.store:
         class: AOS\Security\Crud\Security\Doctrine\EntityStore
+        arguments:
+            - "@service_container"
+
+    aos.crud.security.doctrine.storecleaner:
+        class: AOS\Security\Crud\Security\Doctrine\EntityStoreCleaner
+        arguments:
+            - "@service_container"
 
     aos.crud.security.doctrine.doctrineSecurityService:
         class: AOS\Security\Crud\Security\Doctrine\DoctrineSecurityService
+        public: true
         arguments:
             - "@logger"
             - "@aos.crud.security.securityService"

@@ -3,9 +3,8 @@
 namespace AOS\Security\Crud\Security\Doctrine;
 
 use Symfony\Component\Cache\Adapter\PhpFilesAdapter;
-use Symfony\Component\HttpKernel\CacheClearer\CacheClearerInterface;
 
-class EntityStore implements CacheClearerInterface
+class EntityStore
 {
     private $cacheName;
     private $cacheItemName;
@@ -17,7 +16,7 @@ class EntityStore implements CacheClearerInterface
         $this->cache = new PhpFilesAdapter($this->cacheName);
     }
 
-    public function store(array $entities): void
+    public function store(array $entities)
     {
         $this->openCache();
 
@@ -25,13 +24,6 @@ class EntityStore implements CacheClearerInterface
         $cacheEntities->set($entities);
 
         $this->cache->save($cacheEntities);
-    }
-
-    public function clear($cacheDir)
-    {
-        $this->openCache();
-
-        $this->cache->clear();
     }
 
     public function setCacheName($cacheName)
